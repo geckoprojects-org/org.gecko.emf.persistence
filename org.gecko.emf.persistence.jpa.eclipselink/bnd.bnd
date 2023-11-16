@@ -1,7 +1,6 @@
 -buildpath: \
 	jakarta.persistence-api,\
 	org.eclipse.emf.ecore,\
-	org.gecko.emf.persistence.jpa.orm,\
 	osgi.core,\
 	org.eclipse.persistence.core,\
 	org.eclipse.persistence.jpa,\

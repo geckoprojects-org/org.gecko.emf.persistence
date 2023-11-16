@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012 - 2022" modelDirectory="/org.gecko.emf.persistence.jpa.metamodel.orm/src"
+    modelPluginID="org.gecko.emf.persistence.jpa.metamodel.orm" modelName="EmFmapping"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    containmentProxies="true" complianceLevel="11.0" copyrightFields="false" operationReflection="true"
+    importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>emfmapping.ecore</foreignModel>
+  <genPackages prefix="Emfmapping" basePackage="org.gecko.emf.persistence.jpa.model"
+      disposableProviderFactory="true" literalsInterface="false" ecorePackage="emfmapping.ecore#/">
+    <genClasses ecoreClass="emfmapping.ecore#//Mapping">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference emfmapping.ecore#//Mapping/EnitityMappings"/>
+    </genClasses>
+    <genClasses ecoreClass="emfmapping.ecore#//EnityMapping">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference emfmapping.ecore#//EnityMapping/table"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference emfmapping.ecore#//EnityMapping/enity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference emfmapping.ecore#//EnityMapping/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="emfmapping.ecore#//AttributeMapping">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference emfmapping.ecore#//AttributeMapping/attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference emfmapping.ecore#//AttributeMapping/column"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Orm" ecorePackage="https://jakarta.ee/xml/ns/persistence/orm#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//AccessType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//AccessType/PROPERTY"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//AccessType/FIELD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//ConstraintMode">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//ConstraintMode/CONSTRAINT"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//ConstraintMode/NOCONSTRAINT"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//ConstraintMode/PROVIDERDEFAULT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorType/CHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorType/INTEGER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//EnumType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//EnumType/ORDINAL"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//EnumType/STRING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//FetchType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//FetchType/LAZY"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//FetchType/EAGER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//GenerationType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//GenerationType/TABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//GenerationType/SEQUENCE"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//GenerationType/IDENTITY"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//GenerationType/UUID"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//GenerationType/AUTO"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//InheritanceType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//InheritanceType/SINGLETABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//InheritanceType/JOINED"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//InheritanceType/TABLEPERCLASS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/READ"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/WRITE"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/OPTIMISTIC"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/OPTIMISTICFORCEINCREMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/PESSIMISTICREAD"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/PESSIMISTICWRITE"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/PESSIMISTICFORCEINCREMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//LockModeType/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//ParameterMode">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//ParameterMode/IN"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//ParameterMode/INOUT"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//ParameterMode/OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//ParameterMode/REFCURSOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="https://jakarta.ee/xml/ns/persistence/orm#//TemporalType">
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//TemporalType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//TemporalType/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="https://jakarta.ee/xml/ns/persistence/orm#//TemporalType/TIMESTAMP"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//AccessTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//ConstraintModeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorValue"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//Enumerated"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//EnumTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//FetchTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//GenerationTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//InheritanceTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//LockModeTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//OrderBy"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//ParameterModeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//Temporal"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//TemporalTypeObject"/>
+    <genDataTypes ecoreDataType="https://jakarta.ee/xml/ns/persistence/orm#//VersionType"/>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//AssociationOverride">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//AssociationOverride/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//AssociationOverride/joinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//AssociationOverride/foreignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//AssociationOverride/joinTable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//AssociationOverride/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//AttributeOverride">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//AttributeOverride/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//AttributeOverride/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//AttributeOverride/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Attributes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Attributes/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/embeddedId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/basic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/manyToOne"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/oneToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/oneToOne"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/manyToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/elementCollection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/embedded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Attributes/transient"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Basic">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Basic/column"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Basic/lob"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Basic/temporal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Basic/enumerated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Basic/convert"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Basic/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Basic/fetch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Basic/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Basic/optional"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//CascadeType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CascadeType/cascadeAll"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CascadeType/cascadePersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CascadeType/cascadeMerge"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CascadeType/cascadeRemove"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CascadeType/cascadeRefresh"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CascadeType/cascadeDetach"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable/joinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable/foreignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable/uniqueConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//CollectionTable/schema"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Column">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/columnDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/insertable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/nullable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/precision"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/unique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Column/updatable"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//ColumnResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ColumnResult/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ColumnResult/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//ConstructorResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ConstructorResult/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ConstructorResult/targetClass"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Convert">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Convert/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Convert/attributeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Convert/converter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Convert/disableConversion"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Converter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Converter/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Converter/autoApply"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Converter/class"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorColumn/columnDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorColumn/discriminatorType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorColumn/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//DiscriminatorColumn/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//DocumentRoot/entityMappings"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/orderBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/orderColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyTemporal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyEnumerated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyAttributeOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyConvert"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/mapKeyForeignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/temporal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/enumerated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/lob"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/attributeOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/associationOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/convert"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/collectionTable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/fetch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ElementCollection/targetClass"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Embeddable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Embeddable/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Embeddable/attributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Embeddable/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Embeddable/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Embeddable/metadataComplete"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/basic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/manyToOne"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/oneToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/oneToOne"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/manyToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/elementCollection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/embedded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddableAttributes/transient"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Embedded">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Embedded/attributeOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Embedded/associationOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Embedded/convert"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Embedded/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Embedded/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//EmbeddedId">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EmbeddedId/attributeOverride"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EmbeddedId/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EmbeddedId/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//EmptyType"/>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Entity/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/table"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/secondaryTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/primaryKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/primaryKeyForeignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/idClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/inheritance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Entity/discriminatorValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/discriminatorColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/sequenceGenerator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/tableGenerator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/namedQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/namedNativeQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/namedStoredProcedureQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/sqlResultSetMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/excludeDefaultListeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/excludeSuperclassListeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/entityListeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/prePersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/postPersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/preRemove"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/postRemove"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/preUpdate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/postUpdate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/postLoad"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/attributeOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/associationOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/convert"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/namedEntityGraph"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Entity/attributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Entity/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Entity/cacheable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Entity/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Entity/metadataComplete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Entity/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//EntityListener">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/prePersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/postPersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/preRemove"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/postRemove"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/preUpdate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/postUpdate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/postLoad"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityListener/class"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//EntityListeners">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityListeners/entityListener"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/persistenceUnitMetadata"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/package"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/schema"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/access"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/sequenceGenerator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/tableGenerator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/namedQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/namedNativeQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/namedStoredProcedureQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/sqlResultSetMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/mappedSuperclass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/entity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/embeddable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/converter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityMappingsType/version"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//EntityResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//EntityResult/fieldResult"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityResult/discriminatorColumn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//EntityResult/entityClass"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//FieldResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//FieldResult/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//FieldResult/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//ForeignKey">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ForeignKey/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ForeignKey/constraintMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ForeignKey/foreignKeyDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ForeignKey/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//GeneratedValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//GeneratedValue/generator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//GeneratedValue/strategy"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Id">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Id/column"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Id/generatedValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Id/temporal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Id/tableGenerator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Id/sequenceGenerator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Id/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Id/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//IdClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//IdClass/class"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Index">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Index/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Index/columnList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Index/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Index/unique"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Inheritance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Inheritance/strategy"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/columnDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/insertable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/nullable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/referencedColumnName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/unique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinColumn/updatable"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//JoinTable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/joinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/foreignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/inverseJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/inverseForeignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/uniqueConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//JoinTable/schema"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Lob"/>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/orderBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/orderColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyTemporal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyEnumerated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyAttributeOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyConvert"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mapKeyForeignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/joinTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/cascade"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/fetch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/mappedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToMany/targetEntity"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/joinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/foreignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/joinTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/cascade"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/fetch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/mapsId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/optional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//ManyToOne/targetEntity"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//MapKey">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKey/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//MapKeyClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyClass/class"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/columnDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/insertable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/nullable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/precision"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/unique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyColumn/updatable"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/columnDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/insertable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/nullable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/referencedColumnName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/unique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MapKeyJoinColumn/updatable"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/idClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/excludeDefaultListeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/excludeSuperclassListeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/entityListeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/prePersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/postPersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/preRemove"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/postRemove"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/preUpdate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/postUpdate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/postLoad"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/attributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//MappedSuperclass/metadataComplete"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//NamedAttributeNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedAttributeNode/keySubgraph"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedAttributeNode/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedAttributeNode/subgraph"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//NamedEntityGraph">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedEntityGraph/namedAttributeNode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedEntityGraph/subgraph"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedEntityGraph/subclassSubgraph"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedEntityGraph/includeAllAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedEntityGraph/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//NamedNativeQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedNativeQuery/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedNativeQuery/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedNativeQuery/hint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedNativeQuery/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedNativeQuery/resultClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedNativeQuery/resultSetMapping"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//NamedQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedQuery/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedQuery/query"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedQuery/lockMode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedQuery/hint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedQuery/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery/parameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery/resultClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery/resultSetMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery/hint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedStoredProcedureQuery/procedureName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//NamedSubgraph">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//NamedSubgraph/namedAttributeNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedSubgraph/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//NamedSubgraph/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//OneToMany">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/orderBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/orderColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyTemporal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyEnumerated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyAttributeOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyConvert"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mapKeyForeignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/joinTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/joinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/foreignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/cascade"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/fetch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/mappedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/orphanRemoval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToMany/targetEntity"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//OneToOne">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/primaryKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/primaryKeyForeignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/joinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/foreignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/joinTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/cascade"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/fetch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/mappedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/mapsId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/optional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/orphanRemoval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OneToOne/targetEntity"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//OrderColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OrderColumn/columnDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OrderColumn/insertable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OrderColumn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OrderColumn/nullable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//OrderColumn/updatable"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults/schema"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults/catalog"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults/delimitedIdentifiers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults/access"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults/cascadePersist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitDefaults/entityListeners"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitMetadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitMetadata/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitMetadata/xmlMappingMetadataComplete"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//PersistenceUnitMetadata/persistenceUnitDefaults"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PostLoad">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostLoad/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostLoad/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PostPersist">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostPersist/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostPersist/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PostRemove">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostRemove/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostRemove/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PostUpdate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostUpdate/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PostUpdate/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PrePersist">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PrePersist/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PrePersist/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PreRemove">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PreRemove/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PreRemove/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PreUpdate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PreUpdate/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PreUpdate/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//PrimaryKeyJoinColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PrimaryKeyJoinColumn/columnDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PrimaryKeyJoinColumn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//PrimaryKeyJoinColumn/referencedColumnName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//QueryHint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//QueryHint/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//QueryHint/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//QueryHint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable/primaryKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable/primaryKeyForeignKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable/uniqueConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SecondaryTable/schema"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator/allocationSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator/initialValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator/schema"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SequenceGenerator/sequenceName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//SqlResultSetMapping">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SqlResultSetMapping/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//SqlResultSetMapping/entityResult"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//SqlResultSetMapping/constructorResult"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//SqlResultSetMapping/columnResult"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//SqlResultSetMapping/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//StoredProcedureParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//StoredProcedureParameter/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//StoredProcedureParameter/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//StoredProcedureParameter/mode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//StoredProcedureParameter/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Table">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Table/uniqueConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Table/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Table/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Table/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Table/schema"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/uniqueConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/allocationSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/catalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/initialValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/pkColumnName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/pkColumnValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/schema"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//TableGenerator/valueColumnName"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Transient">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Transient/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//UniqueConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//UniqueConstraint/columnName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//UniqueConstraint/name"/>
+    </genClasses>
+    <genClasses ecoreClass="https://jakarta.ee/xml/ns/persistence/orm#//Version">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference https://jakarta.ee/xml/ns/persistence/orm#//Version/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Version/temporal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Version/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute https://jakarta.ee/xml/ns/persistence/orm#//Version/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

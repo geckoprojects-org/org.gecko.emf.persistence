@@ -12,19 +12,19 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 	org.eclipse.persistence.core,\
 	derby,\
 	org.eclipse.emf.common,\
-	org.gecko.emf.persistence.jpa.eclipselink,\
-	org.osgi.service.component,\
-	org.osgi.service.cm,\
-	org.gecko.emf.osgi.api,\
-	org.osgi.namespace.service,\
-	org.eclipse.emf.ecore.xmi
+	org.gecko.emf.persistence.jpa.model.orm
 	
-Private-Package: org.gecko.emf.persistence.jpa.eclipselink.tests
+Private-Package: org.gecko.emf.persistence.jpa.model.orm.tests
 
 Bundle-Version: 1.0.0.SNAPSHOT
 
-Fragment-Host: org.gecko.emf.persistence.jpa.eclipselink
+-includeresource.persist: \
+	META-INF/persistence.xml=persistence.xml
+	
+-includeresource: \
+	orm=orm
+	
+Fragment-Host: org.gecko.emf.persistence.jpa.model.orm
 
 # Sometimes without DynamicImport Mockito will not find certain classes
 #DynamicImport-Package: *
--privatepackage: org.gecko.emf.persistence.jpa.eclipselink.tests

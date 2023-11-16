@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="emfmapping" nsURI="https://gecko.org/persistence/jpa/emfmapping"
+    nsPrefix="emfmapping">
+  <eClassifiers xsi:type="ecore:EClass" name="Mapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EnitityMappings" upperBound="-1"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnityMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="ecore:EClass https://jakarta.ee/xml/ns/persistence/orm#//Table"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enity" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//AttributeMapping"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass https://jakarta.ee/xml/ns/persistence/orm#//Column"/>
+  </eClassifiers>
+</ecore:EPackage>
