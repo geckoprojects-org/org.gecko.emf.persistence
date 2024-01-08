@@ -1,29 +1,29 @@
 /*
  * Copyright (c) 2012 - 2022
  */
-package .impl;
-
-import .;
-import .OrmPackage;
+package org.gecko.emf.persistence.jpa.model.emfmapping.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.gecko.emf.persistence.jpa.model.emfmapping.EmfmappingPackage;
+import org.gecko.emf.persistence.jpa.model.emfmapping.Lob;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Orm</b></em>'.
+ * An implementation of the model object '<em><b>Lob</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class Impl extends MinimalEObjectImpl.Container implements {
+public class LobImpl extends MinimalEObjectImpl.Container implements Lob {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Impl() {
+	protected LobImpl() {
 		super();
 	}
 
@@ -34,7 +34,7 @@ public class Impl extends MinimalEObjectImpl.Container implements {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrmPackage.Literals.ORM;
+		return EmfmappingPackage.eINSTANCE.getLob();
 	}
 
-} //Impl
+} //LobImpl
