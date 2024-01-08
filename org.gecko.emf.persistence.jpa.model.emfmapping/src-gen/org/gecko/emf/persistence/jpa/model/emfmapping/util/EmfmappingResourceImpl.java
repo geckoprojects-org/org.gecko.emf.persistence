@@ -5,7 +5,7 @@ package org.gecko.emf.persistence.jpa.model.emfmapping.util;
 
 import org.eclipse.emf.common.util.URI;
 
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @see org.gecko.emf.persistence.jpa.model.emfmapping.util.EmfmappingResourceFactoryImpl
  * @generated
  */
-public class EmfmappingResourceImpl extends XMLResourceImpl {
+public class EmfmappingResourceImpl extends XMIResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->

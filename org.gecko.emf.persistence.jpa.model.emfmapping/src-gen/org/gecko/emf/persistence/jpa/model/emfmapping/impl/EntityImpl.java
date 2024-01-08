@@ -11,7 +11,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -534,7 +534,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * @generated
 	 * @ordered
 	 */
-	protected EStructuralFeature class_;
+	protected EClassifier class_;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1720,10 +1720,10 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * @generated
 	 */
 	@Override
-	public EStructuralFeature getClass_() {
+	public EClassifier getClass_() {
 		if (class_ != null && class_.eIsProxy()) {
 			InternalEObject oldClass = (InternalEObject)class_;
-			class_ = (EStructuralFeature)eResolveProxy(oldClass);
+			class_ = (EClassifier)eResolveProxy(oldClass);
 			if (class_ != oldClass) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EmfmappingPackage.ENTITY__CLASS, oldClass, class_));
@@ -1737,7 +1737,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EStructuralFeature basicGetClass() {
+	public EClassifier basicGetClass() {
 		return class_;
 	}
 
@@ -1747,8 +1747,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	 * @generated
 	 */
 	@Override
-	public void setClass(EStructuralFeature newClass) {
-		EStructuralFeature oldClass = class_;
+	public void setClass(EClassifier newClass) {
+		EClassifier oldClass = class_;
 		class_ = newClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EmfmappingPackage.ENTITY__CLASS, oldClass, class_));
@@ -2027,7 +2027,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 				setName((String)newValue);
 				return;
 			case EmfmappingPackage.ENTITY__CLASS:
-				setClass((EStructuralFeature)newValue);
+				setClass((EClassifier)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2144,7 +2144,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 				setName(NAME_EDEFAULT);
 				return;
 			case EmfmappingPackage.ENTITY__CLASS:
-				setClass((EStructuralFeature)null);
+				setClass((EClassifier)null);
 				return;
 		}
 		super.eUnset(featureID);

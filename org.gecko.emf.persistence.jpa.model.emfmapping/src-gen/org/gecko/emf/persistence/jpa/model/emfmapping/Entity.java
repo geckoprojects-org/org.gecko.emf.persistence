@@ -5,8 +5,8 @@ package org.gecko.emf.persistence.jpa.model.emfmapping;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -852,13 +852,13 @@ public interface Entity extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Class</em>' reference.
-	 * @see #setClass(EStructuralFeature)
+	 * @see #setClass(EClassifier)
 	 * @see org.gecko.emf.persistence.jpa.model.emfmapping.EmfmappingPackage#getEntity_Class()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='class'"
 	 * @generated
 	 */
-	EStructuralFeature getClass_();
+	EClassifier getClass_();
 
 	/**
 	 * Sets the value of the '{@link org.gecko.emf.persistence.jpa.model.emfmapping.Entity#getClass_ <em>Class</em>}' reference.
@@ -868,6 +868,6 @@ public interface Entity extends EObject {
 	 * @see #getClass_()
 	 * @generated
 	 */
-	void setClass(EStructuralFeature value);
+	void setClass(EClassifier value);
 
 } // Entity
