@@ -7,10 +7,8 @@
     xmlns:emfmapping="https://gecko.org/persistence/jpa/emfmapping"
     xsi:schemaLocation="https://gecko.org/persistence/jpa/emfmapping emfmapping.ecore">
   <entity>
-    <table name="otherTable1"/>
-    <secondaryTable
-        name="secondaryTable"/>
-    <class xsi:type="ecore:EDataType"
-        href="http://www.eclipse.org/emf/2002/Ecore#//EInvocationTargetException"/>
+    <table name="otherTable"/>
+		<class xsi:type="ecore:EClass"
+			href="http://simple.simple/simple#//ClassOne" />
   </entity>
 </emfmapping:EntityMappingsType>

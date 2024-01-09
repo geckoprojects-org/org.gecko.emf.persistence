@@ -4,19 +4,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.sql.DataSource;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -25,7 +22,6 @@ import org.eclipse.persistence.dynamic.DynamicClassLoader;
 import org.eclipse.persistence.dynamic.DynamicType;
 import org.eclipse.persistence.jpa.dynamic.JPADynamicHelper;
 import org.eclipse.persistence.tools.schemaframework.SchemaManager;
-import org.gecko.emf.persistence.jpa.model.emfmapping.Entity;
 import org.gecko.emf.persistence.jpa.model.emfmapping.EntityMappingsType;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
@@ -58,7 +54,7 @@ public class EntityManagerFactoryConfigurator {
 	private EPackage ePackage;
 
 	@Reference(target = "(emf.model.name=emfmapping)")
-	private ResourceSet rsEmfMapping;
+	private ResourceSet rsMapping;
 
 	private List<DynamicType> dynamicTypes;
 
@@ -89,14 +85,17 @@ public class EntityManagerFactoryConfigurator {
 			}
 		};
 
-		Resource res = rsEmfMapping.createResource(URI.createFileURI(config.mappingFile()));
+		Resource res = rsMapping.createResource(URI.createFileURI(config.mappingFile()));
 		res.load(Map.of());
+		
 		EntityMappingsType emt = (EntityMappingsType) res.getContents().get(0);
+
+		System.out.println(emt.getEntity().get(0).getClass_());
 
 		MappingDynamicInstanceGenerator dih = new MappingDynamicInstanceGenerator(dcl, emt);
 
 		List<EmfDynamicEntity> list = dih.generate(ePackage);
-		dynamicTypes =  list.stream().map(EmfDynamicEntity::calcDynamicType).collect(Collectors.toList());
+		dynamicTypes = list.stream().map(EmfDynamicEntity::calcDynamicType).collect(Collectors.toList());
 
 		PersistenceProvider persistenceProvider = new org.eclipse.persistence.jpa.PersistenceProvider();
 

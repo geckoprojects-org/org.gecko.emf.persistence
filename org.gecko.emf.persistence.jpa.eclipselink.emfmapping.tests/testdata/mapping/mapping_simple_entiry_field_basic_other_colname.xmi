@@ -9,6 +9,14 @@
 	<entity>
 		<class xsi:type="ecore:EClass"
 			href="http://simple.simple/simple#//ClassOne" />
-
+    <attributes>
+      <basic>
+        <column
+            name="otherName"/>
+        <name
+            xsi:type="ecore:EAttribute"
+            href="http://simple.simple/simple#//ClassOne/attributeOne"/>
+      </basic>
+    </attributes>
 	</entity>
 </emfmapping:EntityMappingsType>
