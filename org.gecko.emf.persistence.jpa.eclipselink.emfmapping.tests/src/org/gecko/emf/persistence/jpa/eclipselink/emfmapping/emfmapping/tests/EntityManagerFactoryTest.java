@@ -11,6 +11,8 @@
  */
 package org.gecko.emf.persistence.jpa.eclipselink.emfmapping.emfmapping.tests;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.sql.SQLException;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -34,6 +36,7 @@ import org.gecko.emf.osgi.EMFNamespaces;
 import org.gecko.emf.osgi.EPackageConfigurator;
 import org.gecko.emf.persistence.jpa.eclipselink.emfmapping.EntityManagerFactoryConfigurator;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -128,22 +131,12 @@ public class EntityManagerFactoryTest {
 			@InjectService(cardinality = 1) EntityManagerFactory entityManagerFactory)
 			throws SQLException, InterruptedException {
 
-		EntityManager em = entityManagerFactory.createEntityManager();
-		em.getTransaction().begin();
-
 		Server server = JpaHelper.getServerSession(entityManagerFactory);
-
 		org.eclipse.persistence.descriptors.ClassDescriptor descriptor = server.getDescriptorForAlias("ClassOne");
 
-		DynamicEntity dynamicEntitySimpleEObject = (DynamicEntity) descriptor.getInstantiationPolicy()
-				.buildNewInstance();
+		Object id = writeSimpleObject(entityManagerFactory, descriptor);
 
-		dynamicEntitySimpleEObject.set("attributeOne", "foo");
-
-		em.persist(dynamicEntitySimpleEObject);
-		em.flush();
-		em.getTransaction().commit();
-		em.clear();
+		readSimpleObject(entityManagerFactory, descriptor, id);
 	}
 
 	@WithConfigurations(value = {
@@ -157,24 +150,14 @@ public class EntityManagerFactoryTest {
 			@InjectService(cardinality = 1, timeout = 10000) EntityManagerFactory entityManagerFactory)
 			throws SQLException, InterruptedException {
 
-		EntityManager em = entityManagerFactory.createEntityManager();
-		em.getTransaction().begin();
-
 		Server server = JpaHelper.getServerSession(entityManagerFactory);
-
 		org.eclipse.persistence.descriptors.ClassDescriptor descriptor = server.getDescriptorForAlias("ClassOne");
 
-		DynamicEntity dynamicEntitySimpleEObject = (DynamicEntity) descriptor.getInstantiationPolicy()
-				.buildNewInstance();
+		Object id = writeSimpleObject(entityManagerFactory, descriptor);
 
-		dynamicEntitySimpleEObject.set("attributeOne", "foo");
-
-		em.persist(dynamicEntitySimpleEObject);
-		em.flush();
-		em.getTransaction().commit();
-		em.clear();
+		readSimpleObject(entityManagerFactory, descriptor, id);
 	}
-	
+
 	@WithConfigurations(value = {
 			@WithConfiguration(location = "?", pid = EntityManagerFactoryConfigurator.PID, properties = {
 					@org.osgi.test.common.annotation.Property(key = "dataSource.target", value = "(testSelector=1)"),
@@ -186,25 +169,14 @@ public class EntityManagerFactoryTest {
 			@InjectService(cardinality = 1, timeout = 10000) EntityManagerFactory entityManagerFactory)
 			throws SQLException, InterruptedException {
 
-		EntityManager em = entityManagerFactory.createEntityManager();
-		em.getTransaction().begin();
-
 		Server server = JpaHelper.getServerSession(entityManagerFactory);
-
 		org.eclipse.persistence.descriptors.ClassDescriptor descriptor = server.getDescriptorForAlias("ClassOne");
 
-		DynamicEntity dynamicEntitySimpleEObject = (DynamicEntity) descriptor.getInstantiationPolicy()
-				.buildNewInstance();
+		Object id = writeSimpleObject(entityManagerFactory, descriptor);
 
-		dynamicEntitySimpleEObject.set("attributeOne", "foo");
-
-		em.persist(dynamicEntitySimpleEObject);
-		em.flush();
-		em.getTransaction().commit();
-		em.clear();
+		readSimpleObject(entityManagerFactory, descriptor, id);
 	}
-	
-	
+
 	@WithConfigurations(value = {
 			@WithConfiguration(location = "?", pid = EntityManagerFactoryConfigurator.PID, properties = {
 					@org.osgi.test.common.annotation.Property(key = "dataSource.target", value = "(testSelector=1)"),
@@ -216,22 +188,58 @@ public class EntityManagerFactoryTest {
 			@InjectService(cardinality = 1, timeout = 10000) EntityManagerFactory entityManagerFactory)
 			throws SQLException, InterruptedException {
 
+		Server server = JpaHelper.getServerSession(entityManagerFactory);
+		org.eclipse.persistence.descriptors.ClassDescriptor descriptor = server.getDescriptorForAlias("ClassOne");
+
+		Object id = writeSimpleObject(entityManagerFactory, descriptor);
+
+		readSimpleObject(entityManagerFactory, descriptor, id);
+
+	}
+
+	private void readSimpleObject(EntityManagerFactory entityManagerFactory,
+			org.eclipse.persistence.descriptors.ClassDescriptor descriptor, Object id) {
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 
-		Server server = JpaHelper.getServerSession(entityManagerFactory);
+		DynamicEntity dynEntity = em.find(descriptor.getJavaClass(), id);
 
-		org.eclipse.persistence.descriptors.ClassDescriptor descriptor = server.getDescriptorForAlias("ClassOne");
+		Object foo = dynEntity.get("attributeOne");
+		Object bar = dynEntity.get("attributeTwo");
+		Object buzz = dynEntity.get("attributeThree");
 
-		DynamicEntity dynamicEntitySimpleEObject = (DynamicEntity) descriptor.getInstantiationPolicy()
-				.buildNewInstance();
+		assertThat(foo).isEqualTo("foo");
+		assertThat(bar).isEqualTo("bar");
+		assertThat(buzz).isEqualTo("buzz");
 
-		dynamicEntitySimpleEObject.set("attributeOne", "foo");
-
-		em.persist(dynamicEntitySimpleEObject);
 		em.flush();
 		em.getTransaction().commit();
 		em.clear();
+		em.close();
+	}
+
+	private Object writeSimpleObject(EntityManagerFactory entityManagerFactory,
+			org.eclipse.persistence.descriptors.ClassDescriptor descriptor) {
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+
+		DynamicEntity dynEntity = (DynamicEntity) descriptor.getInstantiationPolicy().buildNewInstance();
+
+		dynEntity.set("attributeOne", "foo");
+		dynEntity.set("attributeTwo", "bar");
+		dynEntity.set("attributeThree", "buzz");
+
+		em.persist(dynEntity);
+
+		Object id = dynEntity.get("id");
+
+		System.out.println(id);
+		em.flush();
+		em.getTransaction().commit();
+		em.clear();
+		em.getEntityManagerFactory().getCache().evictAll();
+		em.close();
+		return id;
 	}
 
 }

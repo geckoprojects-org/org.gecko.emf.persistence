@@ -38,9 +38,12 @@ public class EmfDynamicEntity {
 		if (eClassifier instanceof EClass) {
 
 			EClass eClass = (EClass) eClassifier;
-			String fqClassName = eClass.getEPackage().getName() + "." + eClass.getName();
 
-			Class<?> dynamicClass = dcl.createDynamicClass(fqClassName);
+			Class<?> dynamicClass = eClass.getInstanceClass();
+			if (dynamicClass == null) {
+				String fqClassName = eClass.getEPackage().getName() + "." + eClass.getName();
+				dynamicClass = dcl.createDynamicClass(fqClassName);
+			}
 
 			String primaryTable = eClass.getName();
 			String primaryTableSchema = "";
@@ -139,6 +142,9 @@ public class EmfDynamicEntity {
 				directToFieldMapping.setField(databaseField);
 				directToFieldMapping.setAttributeClassification(Util.convType(eAttribute));
 
+				
+				
+				
 				dynamicTypeBuilder.addMapping(directToFieldMapping);
 
 				if (eAttribute.isID()) {

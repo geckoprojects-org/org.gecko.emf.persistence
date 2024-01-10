@@ -115,6 +115,8 @@ public class EntityManagerFactoryConfigurator {
 		map.put("eclipselink.jdbc.read-connections.min", "1");
 		map.put("eclipselink.jdbc.write-connections.min", "1");
 		map.put("eclipselink.ddl-generation", "drop-and-create-tables");
+		
+		map.put("eclipselink.cache.shared.default" ,"false");
 //		map.put("eclipselink.ddl-generation.output-mode", "both");
 
 		DynamicPersistenceUnitInfo pui = new DynamicPersistenceUnitInfo("DynamicTest", url, map);
