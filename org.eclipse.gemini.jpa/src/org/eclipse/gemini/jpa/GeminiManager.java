@@ -24,20 +24,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.osgi.annotation.bundle.Capability;
+import org.eclipse.gemini.jpa.classloader.CompositeClassLoader;
+import org.eclipse.gemini.jpa.configadmin.ConfigAdminListener;
+import org.eclipse.gemini.jpa.configadmin.PersistenceUnitConfiguration;
+import org.eclipse.gemini.jpa.datasource.DataSourceUtil;
+import org.eclipse.gemini.jpa.jndi.JndiUtil;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
-
-import jakarta.persistence.spi.PersistenceProvider;
-
-import org.eclipse.gemini.jpa.classloader.CompositeClassLoader;
-import org.eclipse.gemini.jpa.datasource.DataSourceUtil;
-import org.eclipse.gemini.jpa.jndi.JndiUtil;
-import org.eclipse.gemini.jpa.configadmin.ConfigAdminListener;
-import org.eclipse.gemini.jpa.configadmin.PersistenceUnitConfiguration;
 
 /*
  * This is the main Gemini JPA class. It contains much of the state 

@@ -15,11 +15,9 @@
 package org.eclipse.gemini.jpa;
 
 import static org.eclipse.gemini.jpa.GeminiUtil.debug;
-import static org.eclipse.gemini.jpa.GeminiUtil.getPackageAdmin;
 import static org.eclipse.gemini.jpa.GeminiUtil.warning;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,7 +33,6 @@ import org.osgi.framework.BundleEvent;
 import org.osgi.framework.Constants;
 import org.osgi.framework.SynchronousBundleListener;
 import org.osgi.framework.wiring.FrameworkWiring;
-import org.osgi.service.packageadmin.PackageAdmin;
 
 /**
  * The extender listens for persistence unit bundles and pushes them through 
