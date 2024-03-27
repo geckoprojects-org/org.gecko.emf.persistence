@@ -26,7 +26,7 @@ import com.mongodb.client.FindIterable;
 		version = "2.0",
 		attribute = "type=default"
 		)
-@Component(name="EIteratorInputContentHandler", service=InputContentHandler.class, property = {Constants.SERVICE_RANKING + "=20"})
+@Component(name="EIteratorInputContentHandler", service=InputContentHandler.class, property = {Constants.SERVICE_RANKING + ":Integer=20"})
 public class EMFCursorInputContentHandler extends UncachedInputContentHandler {
 	
 	/* (non-Javadoc)
