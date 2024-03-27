@@ -10,8 +10,8 @@ import org.gecko.emf.mongo.Keywords;
 import org.gecko.emf.mongo.Options;
 import org.gecko.emf.mongo.UncachedInputContentHandler;
 import org.osgi.annotation.bundle.Capability;
-import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.propertytypes.ServiceRanking;
 
 import com.mongodb.client.FindIterable;
 
@@ -26,7 +26,8 @@ import com.mongodb.client.FindIterable;
 		version = "2.0",
 		attribute = "type=default"
 		)
-@Component(name="EIteratorInputContentHandler", service=InputContentHandler.class, property = {Constants.SERVICE_RANKING + ":Integer=20"})
+@Component(name="EIteratorInputContentHandler", service=InputContentHandler.class)
+@ServiceRanking(20)
 public class EMFCursorInputContentHandler extends UncachedInputContentHandler {
 	
 	/* (non-Javadoc)

@@ -22,8 +22,8 @@ import org.gecko.emf.mongo.pushstream.constants.MongoPushStreamConstants;
 import org.gecko.emf.pushstream.CustomPushStreamProvider;
 import org.gecko.emf.pushstream.PushStreamFactory;
 import org.osgi.annotation.bundle.Capability;
-import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.propertytypes.ServiceRanking;
 import org.osgi.util.pushstream.PushEventSource;
 import org.osgi.util.pushstream.PushStreamProvider;
 
@@ -34,7 +34,8 @@ import com.mongodb.client.FindIterable;
  * @author Mark Hoffmann
  * @since 23.11.2017
  */
-@Component(name="PushStreamInputContentHandler", service=InputContentHandler.class, property = {Constants.SERVICE_RANKING + "=10"})
+@Component(name="PushStreamInputContentHandler", service=InputContentHandler.class)
+@ServiceRanking(10)
 @Capability(
 		namespace = Keywords.CAPABILITY_EXTENSION_NAMESPACE,
 		name = "pushstream",
