@@ -677,7 +677,7 @@ public abstract class DefaultEMFRepository implements EMFRepository {
 			logger.log(Level.SEVERE, "Error getting EObject without class name or id parameters");
 			return null;
 		}
-		URI uri = createEClassUri(eClassName, options).appendSegment(id.toString()).appendFragment(id.toString());
+		URI uri = createEClassUri(eClassName, options).appendSegment(URI.encodeSegment(id.toString(), true)).appendFragment(URI.encodeFragment(id.toString(), true));
 		return getEObject(uri, options);
 	}
 	

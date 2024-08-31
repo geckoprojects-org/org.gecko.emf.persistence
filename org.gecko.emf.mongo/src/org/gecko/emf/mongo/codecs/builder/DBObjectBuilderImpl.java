@@ -226,7 +226,7 @@ public class DBObjectBuilderImpl implements DBObjectBuilder {
 		Boolean useIdAttributeAsPrimaryKey = (Boolean) options.get(Options.OPTION_USE_ID_ATTRIBUTE_AS_PRIMARY_KEY);
 		Object id = null;
 		if (useIdAttributeAsPrimaryKey == null || useIdAttributeAsPrimaryKey) {
-			EAttribute idAttribute = eObject.eClass().getEIDAttribute();
+			EAttribute idAttribute = Options.getIDAttribute(eObject.eClass(), options);
 			if (idAttribute != null) {
 				id = eObject.eGet(idAttribute);
 			}

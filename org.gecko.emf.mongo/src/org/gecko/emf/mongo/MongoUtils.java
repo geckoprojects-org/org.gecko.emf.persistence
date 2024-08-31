@@ -42,7 +42,7 @@ public class MongoUtils {
 		if (uri.segmentCount() != 3) {
 			throw new IOException("The URI is not of the form 'mongo:/database/collection/{id}");
 		}
-		String id = uri.segment(2);
+		String id = URI.decode(uri.segment(2));
 
 		// If the ID was specified in the URI, we first attempt to create a MongoDB ObjectId. If
 		// that fails, we assume that the client has specified a non ObjectId and return the raw data.
@@ -68,7 +68,7 @@ public class MongoUtils {
 		if (uri.segmentCount() != 3) {
 			throw new IOException("The URI is not of the form 'mongo:/database/collection/{id}");
 		}
-		String id = uri.segment(2);
+		String id = URI.decode(uri.segment(2));
 		
 		return id;
 	}
@@ -82,7 +82,7 @@ public class MongoUtils {
 	 */
 	public static Object getIDWithValidURI(URI uri) {
 
-		String id = uri.segment(2);
+		String id = URI.decode(uri.segment(2));
 		
 		// If the ID was specified in the URI, we first attempt to create a MongoDB ObjectId. If
 		// that fails, we assume that the client has specified a non ObjectId and return the raw data.

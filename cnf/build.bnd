@@ -13,8 +13,8 @@
 dimcBaselining: true
 mavenCentral: true
 github-project: org.gecko.emf.persistence
-base-version: 6.1.1
-repository-base-version: 9.3.0.${tstamp}-SNAPSHOT
+base-version: 6.2.0
+repository-base-version: 9.4.0.${tstamp}-SNAPSHOT
 
 # Maven Central Group-Id
 # For Geckoprojects the groupid must start with org.geckoprojects

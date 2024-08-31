@@ -30,13 +30,13 @@ pipeline  {
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/org.gecko.persistence"
             }
         }
-        stage('Gitlab branch release') {
+        stage('Gitlab branch Build') {
             when { 
                 branch 'gitlab'
             }
             steps  {
                 echo "I am building on ${env.JOB_NAME}"
-                sh "./gradlew clean build release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew clean build release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2 --no-daemon"
                 sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/org.gecko.emf.persistence_gitlab"
                 sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/org.gecko.emf.persistence_gitlab/*"
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/org.gecko.emf.persistence_gitlab"

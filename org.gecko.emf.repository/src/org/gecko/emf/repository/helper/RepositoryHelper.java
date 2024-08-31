@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.gecko.emf.repository.exception.ConstraintValidationException;
 
 /**
@@ -75,7 +76,7 @@ public class RepositoryHelper {
 	private static Diagnostic checkForAttachedNonContainmentRefs(EObject eObject, EReference reference) {
 		
 		if(reference != null && !reference.isContainment()) {
-			if(eObject.eIsProxy() || (eObject.eResource() != null && eObject.eResource().getResourceSet() != null)){
+			if(eObject.eIsProxy() || (eObject.eResource() != null && eObject.eResource().getResourceSet() != null )){
 				return OK_INSTANCE;
 			} else {
 				return new BasicDiagnostic(Diagnostic.ERROR, eObject.toString() + " for reference " + reference.getName(), 42, "The Object is no Proxy and is not attached to any Resource/ResourceSet", null);
@@ -96,11 +97,20 @@ public class RepositoryHelper {
 				if(r.isContainment()) {
 					eos.stream().map(eo -> checkForAttachedNonContainmentRefs(eo, r)).map(eo->(Diagnostic) eo).forEach(chain::add);
 				} else {
-					BasicEList<EObject> list = (BasicEList<EObject>) eos;
-					for(int i = 0 ; i < list.size(); i++) {
-						EObject eo = list.basicGet(i);
-						chain.add(checkForAttachedNonContainmentRefs(eo, r));
+					if(eos instanceof BasicEList) {
+						BasicEList<EObject> list = (BasicEList<EObject>) eos;
+						for(int i = 0 ; i < list.size(); i++) {
+							EObject eo = list.basicGet(i);
+							chain.add(checkForAttachedNonContainmentRefs(eo, r));
+						}
+					} else if(eos instanceof InternalEList) {
+						InternalEList<EObject> list = (InternalEList<EObject>) eos;
+						for(int i = 0 ; i < list.size(); i++) {
+							EObject eo = list.basicGet(i);
+							chain.add(checkForAttachedNonContainmentRefs(eo, r));
+						}
 					}
+						
 				}
 				return chain;
 			} else {

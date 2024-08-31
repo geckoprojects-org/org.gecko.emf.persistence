@@ -3,7 +3,7 @@ Bundle-License: Eclipse Public License v1.0
 Bundle-Name: EMF Repository API
 Bundle-Description: EMF Repository API
 Bundle-Vendor: Data In Motion Consulting GmbH
-Bundle-Version: 9.3.0.${tstamp}-SNAPSHOT
+Bundle-Version: 9.3.1.${tstamp}-SNAPSHOT
 Export-Package: \
 	org.gecko.emf.repository.query,\
 	org.gecko.emf.repository,\

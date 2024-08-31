@@ -18,7 +18,7 @@
 
 Bundle-Name: EMF Repository Mongo 
 Bundle-Description: EMF Mongo Repository Implementation
-Bundle-Version: 3.2.0.${tstamp}-SNAPSHOT
+Bundle-Version: 3.3.0.${tstamp}-SNAPSHOT
 Provide-Capability: emf.repository;emf.repository=mongo
 Require-Capability: org.gecko.osgi.emf.persistence;filter:='(org.gecko.osgi.emf.persistence=mongo)'
 Private-Package: \

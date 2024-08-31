@@ -11,10 +11,12 @@
  *******************************************************************************/
 package org.gecko.emf.mongo;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -310,6 +312,23 @@ public interface Options {
 	 * </code>
 	 */
 	String OPTION_COLLECTION_NAME = "COLLECTION_NAME";
+
+	/**
+	 * An {@link EAttribute} to use as primary key instead of the ID Attribute 
+	 * 
+	 * Value type: {@link EAttribute}
+	 */
+	String OVERWRITE_PRIMARY_KEY_EATTRIBUTE = "OVERWRITE_PRIMARY_KEY_EATTRIBUTE";
+
+	/**
+	 * A List of potential {@link EAttribute}s to use as primary key instead of the ID Attribute. 
+	 * The first {@link EAttribute} that fits the {@link EClass} to store will be used.   
+	 * 
+	 * If OVERWRITE_PRIMARY_KEY_EATTRIBUTE is set at the same time, it will be evaluated first.
+	 * 
+	 * Value type: {@link List} of {@link EAttribute}
+	 */
+	String OVERWRITE_PRIMARY_KEY_EATTRIBUTES = "OVERWRITE_PRIMARY_KEY_EATTRIBUTES";
 	
 	/**
 	 * Returns <code>true</code>, if the {@link Options#OPTION_USE_EXTENDED_METADATA}
@@ -433,4 +452,46 @@ public interface Options {
 		return alias == null ? null : alias.toString();
 	}
 	
+	public static EAttribute getIDAttribute(EClass eClass, Map<?, ?> options) {
+		if(options == null) {
+			return eClass.getEIDAttribute();
+		}
+		
+		EAttribute idAttribute = (EAttribute) options.getOrDefault(OVERWRITE_PRIMARY_KEY_EATTRIBUTE, null);
+		if(idAttribute != null && idAttribute.getEContainingClass().isSuperTypeOf(eClass)) {
+			return idAttribute;
+		}
+		
+		Object attributesObject = options.getOrDefault(OVERWRITE_PRIMARY_KEY_EATTRIBUTES, null);
+		if(attributesObject != null) {
+			@SuppressWarnings("unchecked")
+			List<EAttribute> attributes = (List<EAttribute>) attributesObject;
+			int firstHit = -1;
+			for (int i = 0; i < attributes.size(); i++) {
+				EAttribute eAttribute = attributes.get(i);
+				EClass containingEClass = eAttribute.getEContainingClass();
+				if(containingEClass == eClass) {
+					return eAttribute;
+				}
+				if(firstHit != -1 && eAttribute.getEContainingClass().isSuperTypeOf(eClass)) {
+					firstHit = i;
+				}
+			}
+			if(firstHit != -1) {
+				return attributes.get(firstHit);
+			}
+		}
+		
+		return eClass.getEIDAttribute();
+	}
+	
+	public static boolean useIdAttributeAsPrimaryKey(Map<?, ?> options) {
+		Object value = options.getOrDefault(OPTION_USE_ID_ATTRIBUTE_AS_PRIMARY_KEY, null);
+		if(value == null) {
+			return true;
+		} else if(value instanceof String) {
+			return Boolean.parseBoolean((String) value);
+		}
+		return (boolean) value;
+	}
 }

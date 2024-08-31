@@ -19,15 +19,16 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bson.types.ObjectId;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gecko.collection.EReferenceCollection;
 import org.gecko.emf.mongo.Options;
 import org.gecko.emf.osgi.ResourceSetFactory;
@@ -127,7 +128,12 @@ public abstract class AbstractEMFMongoRepository extends DefaultEMFRepository im
 			return null;
 		}
 		String eclassAlias = getCollectionName(eClass, options);
-		return getEObject(eclassAlias, id, options);
+		URI uri = createEClassUri(eclassAlias, options).appendSegment(URI.encodeSegment(id.toString(), true));
+		EAttribute idAttribute = Options.getIDAttribute(eClass, options);
+		if(idAttribute.isID()) {
+			uri = uri.appendFragment(URI.encodeFragment(id.toString(), true));
+		}
+		return getEObject(uri, options);
 	}
 	
 	/* 
@@ -159,7 +165,10 @@ public abstract class AbstractEMFMongoRepository extends DefaultEMFRepository im
 		if (object == null) {
 			return null;
 		}
-		String id = EcoreUtil.getID(object);
+		
+		EAttribute idAttribute = Options.getIDAttribute(object.eClass(), options);
+		
+		String id = idAttribute != null ? Objects.toString(object.eGet(idAttribute)) : null; 
 		URI uri = createMongoURI(object.eClass(), options);
 		
 		Object useId = options.get(Options.OPTION_USE_ID_ATTRIBUTE_AS_PRIMARY_KEY);
@@ -173,12 +182,12 @@ public abstract class AbstractEMFMongoRepository extends DefaultEMFRepository im
 		 * the _id will be generated from the MongoDB 
 		 */
 		if (useId == null || Boolean.TRUE.equals(useId)) {
-			uri = uri.appendSegment(id);
+			uri = uri.appendSegment(URI.encodeSegment(id, true));
 		} else {
 			uri = uri.appendSegment("");
 		}
 		if (id != null) {
-			uri = uri.appendFragment(id);
+			uri = uri.appendFragment(URI.encodeFragment(id, true));
 		}
 		return uri;
 	}

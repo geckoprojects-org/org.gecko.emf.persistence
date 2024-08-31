@@ -272,7 +272,7 @@ public class EObjectBuilderImpl implements EObjectBuilder {
 				}
 				oid = oidValue.toString(); 
 				reader.readBsonType(); //set the reader to the state requried by the next step.
-				URI uri = baseUri.trimSegments(1).appendSegment(oid).trimQuery();
+				URI uri = baseUri.trimSegments(1).appendSegment(URI.encodeSegment(oid, true)).trimQuery();
 				if(!resource.getURI().equals(uri)){
 					loadResource = factory.createResource(uri);
 					if(resourceCache != null){

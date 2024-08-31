@@ -84,8 +84,7 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 		this.uri = uri;
 		this.idFactories = idProviders;
 		normalizeOptions(options);
-		Boolean useIdAttributeAsPrimaryKey = (Boolean) options.get(Options.OPTION_USE_ID_ATTRIBUTE_AS_PRIMARY_KEY);
-		this.useIdAttributeAsPrimaryKey = (useIdAttributeAsPrimaryKey == null || useIdAttributeAsPrimaryKey);
+		this.useIdAttributeAsPrimaryKey = Options.useIdAttributeAsPrimaryKey(options);
 		this.forceInsert = Boolean.TRUE.equals(options.get(Options.OPTION_FORCE_INSERT));
 		this.clearResourceAfterInsert = !options.containsKey(Options.OPTION_CLEAR_RESOURCE_AFTER_BATCH_INSERT) || Boolean.TRUE.equals(options.get(Options.OPTION_CLEAR_RESOURCE_AFTER_BATCH_INSERT));
 	}
@@ -111,7 +110,7 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 			saveMultipleObjects(curCollection);
 		} else {
 			EObject eObject = resource.getContents().get(0);
-			EAttribute idAttribute = eObject.eClass().getEIDAttribute();
+			EAttribute idAttribute = Options.getIDAttribute(eObject.eClass(), mergedOptions);
 			String uriId = MongoUtils.getIDAsString(uri);
 			if(idAttribute == null && useIdAttributeAsPrimaryKey){
 				throw new IllegalStateException("EObject has no ID Attribute to be used together with option " +  Options.OPTION_USE_ID_ATTRIBUTE_AS_PRIMARY_KEY);
@@ -140,7 +139,7 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 					}
 				}
 			}
-			saveSingleObject(curCollection);
+			saveSingleObject(curCollection, idAttribute);
 		}
 	}
 
@@ -170,7 +169,7 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 
 		List<WriteModel<EObject>> bulk = new ArrayList<>(contents.size()); 
 		for (EObject eObject : contents) {
-			EAttribute idAttribute = eObject.eClass().getEIDAttribute();
+			EAttribute idAttribute = Options.getIDAttribute(eObject.eClass(), mergedOptions);
 
 			if(idAttribute == null && useIdAttributeAsPrimaryKey){
 				throw new IllegalStateException("EObjects have no ID Attribute to be used together with option " +  Options.OPTION_USE_ID_ATTRIBUTE_AS_PRIMARY_KEY);
@@ -186,7 +185,7 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 			if(forceInsert){
 				bulk.add(new InsertOneModel<EObject>(eObject));
 			} else {
-				Bson updateFilter = createUpdateFilter(eObject);
+				Bson updateFilter = createUpdateFilter(eObject, idAttribute);
 				bulk.add(new ReplaceOneModel<EObject>(updateFilter, eObject, ReplaceOptions.createReplaceOptions(UPDATE_OPTIONS)));
 			}
 		}
@@ -216,14 +215,13 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 	 * @param collection the collection to save the object for
 	 * @throws IOException thrown on errors during saving
 	 */
-	private void saveSingleObject(MongoCollection<EObject> collection) throws IOException {
+	private void saveSingleObject(MongoCollection<EObject> collection, EAttribute idAttribute) throws IOException {
 		EObject eObject = resource.getContents().get(0);
 		if(forceInsert){
 			collection.insertOne(eObject);
 		} else {
-			Bson updateFilter = createUpdateFilter(eObject);
+			Bson updateFilter = createUpdateFilter(eObject, idAttribute);
 			FindOneAndReplaceOptions farOptions = new FindOneAndReplaceOptions().upsert(true).returnDocument(ReturnDocument.AFTER);
-			EAttribute idAttribute = eObject.eClass().getEIDAttribute();
 			// Minimize the load by just adding projection for minimum set of attributes
 			if (idAttribute != null) {
 				String eClassKey = Options.getEClassKey((Map<?, ?>) mergedOptions);
@@ -244,7 +242,7 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 		}
 	}
 
-	private Bson createUpdateFilter(EObject eObject) throws IOException {
+	private Bson createUpdateFilter(EObject eObject, EAttribute idAttribute) throws IOException {
 		String idKey = "_id";
 		Object id = null;
 		if (!useIdAttributeAsPrimaryKey) {
@@ -252,7 +250,6 @@ public class MongoOutputStream extends ByteArrayOutputStream implements URIConve
 			if (pkId != null && !pkId.isEmpty()) {
 				id = normalizeMongoId(pkId);
 			} else {
-				EAttribute idAttribute = eObject.eClass().getEIDAttribute();
 				idKey = idAttribute == null ? "_id" : idAttribute.getName();
 				id = EcoreUtil.getID(eObject);
 			}

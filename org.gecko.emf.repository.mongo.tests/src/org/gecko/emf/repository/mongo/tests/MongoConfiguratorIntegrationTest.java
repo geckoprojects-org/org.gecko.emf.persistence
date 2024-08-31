@@ -19,15 +19,20 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.gecko.emf.mongo.Options;
 import org.gecko.emf.osgi.ResourceSetFactory;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.gecko.emf.osgi.example.model.basic.BasicFactory;
@@ -158,6 +163,66 @@ public class MongoConfiguratorIntegrationTest extends EMFMongoIT {
 		assertTrue(mcpAware.isEmpty());
 		assertTrue(mdpAware.isEmpty());
 		assertTrue(rsfAware.isEmpty());
+	}
+	
+	@Test
+	public void testEMFMongoRepositoryOptionOverwritePrimaryKey(@InjectService(cardinality = 0) ServiceAware<MongoClientProvider> mcpAware,
+			@InjectService(cardinality = 0) ServiceAware<MongoDatabaseProvider> mdpAware,
+			@InjectService(cardinality = 0, filter = "(" + EMFRepository.PROP_ID + "=test1.test)") ServiceAware<EMFRepository> repoAware,
+			@InjectService(cardinality = 0, filter = "(&(" + EMFNamespaces.EMF_CONFIGURATOR_NAME + "=mongo)(" + EMFNamespaces.EMF_CONFIGURATOR_NAME + "=test1.test))") ServiceAware<ResourceSetFactory> rsfAware) throws BundleException, InvalidSyntaxException, IOException, InterruptedException {
+		/**
+		 * mongo.instances=test1
+		 * test1.baseUris=mongodb://localhost
+		 * test1.databases=test
+		 */
+		
+		Dictionary<String, Object> configProperties = new Hashtable<>();
+		configProperties.put("mongo.instances", "test1");
+		configProperties.put("test1.baseUris", "mongodb://" + mongoHost);
+		configProperties.put("test1.databases", "test");
+		
+//		String clientId = "test1.test";
+		
+//		defaultCheck();
+		
+		assertTrue(repoAware.isEmpty());
+		assertTrue(mcpAware.isEmpty());
+		assertTrue(mdpAware.isEmpty());
+		assertTrue(rsfAware.isEmpty());
+		
+		Configuration repositoryConfig = configAdmin.createFactoryConfiguration(EMFMongoConfiguratorConstants.EMF_MONGO_REPOSITORY_CONFIGURATOR_CONFIGURATION_NAME, "?");
+		repositoryConfig.update(configProperties);
+		
+		rsfAware.waitForService(2000l);
+		mcpAware.waitForService(2000l);
+		mdpAware.waitForService(2000l);
+		
+		EMFRepository repository = repoAware.waitForService(2000l);
+		URI expected = URI.createURI("mongodb://test1/test/EPackage").appendSegment(URI.encodeSegment(BasicPackage.eINSTANCE.getNsURI(), true)).appendFragment(URI.encodeFragment(BasicPackage.eINSTANCE.getNsURI(), true));
+		
+		URI uri = repository.createUri(BasicPackage.eINSTANCE, Collections.singletonMap(Options.OVERWRITE_PRIMARY_KEY_EATTRIBUTE, EcorePackage.Literals.EPACKAGE__NS_URI));
+		System.out.println("EAttribute URI");
+		System.out.println("=========================================================");
+		System.out.println(uri);
+		assertEquals(expected, uri);
+
+		uri = repository.createUri(BasicPackage.eINSTANCE, Collections.singletonMap(Options.OVERWRITE_PRIMARY_KEY_EATTRIBUTES, Collections.singletonList(EcorePackage.Literals.EPACKAGE__NS_URI)));
+		System.out.println("EAttribute URI2");
+		System.out.println("=========================================================");
+		System.out.println(uri);
+		assertEquals(expected, uri);
+		
+		EObject basicPackage = EcoreUtil.copy(BasicPackage.eINSTANCE);
+		repository.save(basicPackage, Collections.singletonMap(Options.OVERWRITE_PRIMARY_KEY_EATTRIBUTE, EcorePackage.Literals.EPACKAGE__NS_URI));
+		repository.detach(basicPackage);
+		
+		EObject eObject = repository.getEObject(EcorePackage.Literals.EPACKAGE, BasicPackage.eINSTANCE.getNsURI(), Collections.singletonMap(Options.OVERWRITE_PRIMARY_KEY_EATTRIBUTE, EcorePackage.Literals.EPACKAGE__NS_URI));
+		
+		assertNotNull(eObject);
+		assertEquals(EcorePackage.Literals.EPACKAGE, eObject.eClass());
+		assertEquals(BasicPackage.eINSTANCE.getNsURI(), ((EPackageImpl) eObject).getNsURI());
+		assertNotEquals(basicPackage, eObject);
+		assertNotEquals(BasicPackage.eINSTANCE, eObject);
 	}
 
 //	@Test
